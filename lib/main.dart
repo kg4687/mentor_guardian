@@ -26,7 +26,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _emailController = TextEditingController();
   bool _isEmailEntered = false;
-
+//hgiuerhigue
   @override
   void initState() {
     super.initState();
