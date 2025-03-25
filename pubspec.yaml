@@ -30,5 +30,9 @@ flutter:
     - images/blog1.png
     - images/blog2.png
     - images/blog3.jpg
-    - images/alarm-bell.png
+    - images/bell_icon.png
     - images/profile_icon.png
+    - images/explore_icon.png
+    - images/learning_icon.png
+    - images/home_icon.png
+    - images/home1.png
