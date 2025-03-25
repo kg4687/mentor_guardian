@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'views/LoginPage.dart';
+import 'views/HomePage.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -25,35 +26,5 @@ final GoRouter _router = GoRouter(
   ],
 );
 
-// Sample Pages
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go('/login'), // Navigate using context.go()
-          child: const Text('Go to Login'),
-        ),
-      ),
-    );
-  }
-}
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => context.go('/'), // Navigate back to Home
-          child: const Text('Go to Home'),
-        ),
-      ),
-    );
-  }
-}
+
