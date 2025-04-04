@@ -10,7 +10,6 @@ import 'views/explore_page.dart';
 import 'views/profile_page.dart';
 import 'views/challenges_page.dart';
 import 'views/questionnaire_screen.dart';
-import 'community/welcome_screen.dart';
 import 'widgets/MainScreen.dart';
 
 final GoRouter _router = GoRouter(
@@ -26,7 +25,6 @@ final GoRouter _router = GoRouter(
     GoRoute(path: '/profile', builder: (context, state) => ProfilePage()),
     GoRoute(path: '/notifications', builder: (context, state) => const NotificationPage()),
     GoRoute(path: '/challenges', builder: (context, state) => const ChallengesPage()),
-    GoRoute(path: '/community', builder: (context, state) => WelcomeScreen()),
   ],
 );
 
