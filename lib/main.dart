@@ -5,6 +5,7 @@ import 'views/notification_page.dart';
 import 'views/learning_page.dart';
 import 'views/explore_page.dart';
 import 'views/profile_page.dart';
+import 'MainScreen.dart';
 
 
 void main() {
@@ -12,13 +13,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routerConfig: _router,
+      title: 'Flutter App',
+      theme: ThemeData(primarySwatch: Colors.pink),
+      home: MainScreen(),
     );
   }
 }
@@ -30,7 +33,7 @@ final GoRouter _router = GoRouter(
     GoRoute(path: '/home', builder: (context, state) => const HomePage()),
     GoRoute(path: '/learning', builder: (context, state) => const LearningPage()),
     GoRoute(path: '/explore', builder: (context, state) => const ExplorePage()),
-    GoRoute(path: '/profile', builder: (context, state) => const ProfilePage()),
+    GoRoute(path: '/profile', builder: (context, state) => ProfilePage()),
     GoRoute(path: '/notifications', builder: (context, state) => const NotificationPage()),
   ],
 );

@@ -52,12 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-          },
-        ),
+        automaticallyImplyLeading: false, // 🔥 Removes the back arrow
         title: const Text(
           "Profile",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
@@ -68,14 +63,12 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Profile Image
             const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage('images/profile_picture.jpg'),
             ),
             const SizedBox(height: 10),
 
-            // Name & Username
             Text(
               name,
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -86,7 +79,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 20),
 
-            // Edit Profile Button
             ElevatedButton(
               onPressed: () async {
                 final updatedProfile = await Navigator.push(
@@ -122,7 +114,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 20),
 
-            // Details
             ProfileDetail(label: "Name", value: name),
             ProfileDetail(label: "Username", value: username),
             ProfileDetail(label: "Location", value: location),
@@ -130,19 +121,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
             const SizedBox(height: 20),
 
-            // Settings Section
             SettingsOption(icon: Icons.notifications, text: "Notification preferences"),
             SettingsOption(icon: Icons.help_outline, text: "Help"),
             SettingsOption(icon: Icons.logout, text: "Logout"),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(currentIndex: 3),
     );
   }
 }
 
-// Custom Profile Detail Widget
 class ProfileDetail extends StatelessWidget {
   final String label;
   final String value;
@@ -169,7 +157,6 @@ class ProfileDetail extends StatelessWidget {
   }
 }
 
-// Settings Option Widget
 class SettingsOption extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -198,60 +185,6 @@ class SettingsOption extends StatelessWidget {
           const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.black),
         ],
       ),
-    );
-  }
-}
-
-// Bottom Navigation Bar
-class BottomNavBar extends StatelessWidget {
-  final int currentIndex;
-
-  const BottomNavBar({required this.currentIndex, Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      selectedItemColor: Colors.pinkAccent,
-      unselectedItemColor: Colors.grey,
-      showUnselectedLabels: true,
-      items: [
-        BottomNavigationBarItem(
-          icon: Image.asset('images/home_icon.png', width: 24),
-          label: "Home",
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('images/learning_icon.png', width: 24),
-          label: "Learning",
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('images/explore_icon.png', width: 24),
-          label: "Explore",
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('images/profile_icon.png', width: 24),
-          label: "Profile",
-        ),
-      ],
-      onTap: (index) {
-        Widget page;
-        switch (index) {
-          case 0:
-            page = const HomePage();
-            break;
-          case 1:
-            page = const LearningPage();
-            break;
-          case 2:
-            page = const ExplorePage();
-            break;
-          case 3:
-            return; // Stay on Profile Page
-          default:
-            return;
-        }
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => page));
-      },
     );
   }
 }
