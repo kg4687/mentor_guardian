@@ -38,3 +38,7 @@ flutter:
     - images/home1.png
     - images/no_notification.png
     - images/profile_pic.png
+    - images/challenges.png
+    - images/community.png
+    - images/live_events.png
+    - images/telecoaching.png

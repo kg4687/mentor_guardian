@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
-import 'profile_page.dart';
 
 class ProfileEditPage extends StatefulWidget {
-  const ProfileEditPage({Key? key, required String name, required String username, required String location, required String about}) : super(key: key);
+  final String name;
+  final String username;
+  final String location;
+  final String about;
+
+  const ProfileEditPage({
+    Key? key,
+    required this.name,
+    required this.username,
+    required this.location,
+    required this.about,
+  }) : super(key: key);
 
   @override
   _ProfileEditPageState createState() => _ProfileEditPageState();
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
-  // Controllers to handle text input
-  TextEditingController nameController = TextEditingController(text: "Radha");
-  TextEditingController usernameController = TextEditingController(text: "Radha_420");
-  TextEditingController locationController = TextEditingController(text: "Location");
-  TextEditingController aboutController = TextEditingController(text: "About me");
+  late TextEditingController nameController;
+  late TextEditingController usernameController;
+  late TextEditingController locationController;
+  late TextEditingController aboutController;
 
   bool isProfileHidden = false;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: widget.name);
+    usernameController = TextEditingController(text: widget.username);
+    locationController = TextEditingController(text: widget.location);
+    aboutController = TextEditingController(text: widget.about);
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    usernameController.dispose();
+    locationController.dispose();
+    aboutController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +50,10 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context); // Go back to Profile Page
-          },
-        ),
         title: const Text(
-          "Profile",
+          "Edit Profile",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.camera_alt, color: Colors.black),
-            onPressed: () {
-              // Profile picture change functionality
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -48,22 +61,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Profile Image
-            CircleAvatar(
+            const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage('images/profile_picture.jpg'),
             ),
             const SizedBox(height: 10),
-
-            // Name & Username
-            const Text(
-              "Radha",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              "Radha_420",
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            const SizedBox(height: 20),
 
             // Editable Fields
             buildEditableField("Name", nameController),
@@ -103,7 +105,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
             // Description
             const Text(
-              "If you hide profile, other members of the community won’t be able to see it",
+              "If you hide your profile, other members of the community won’t be able to see it.",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14, color: Colors.black),
             ),
@@ -113,17 +115,12 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             // Save Button
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(
-                      name: nameController.text,
-                      username: usernameController.text,
-                      location: locationController.text,
-                      about: aboutController.text,
-                    ),
-                  ),
-                );
+                Navigator.pop(context, {
+                  'name': nameController.text,
+                  'username': usernameController.text,
+                  'location': locationController.text,
+                  'about': aboutController.text,
+                });
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.pinkAccent,
