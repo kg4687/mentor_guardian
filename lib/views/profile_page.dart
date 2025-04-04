@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'learning_page.dart';
-import 'explore_page.dart';
+import 'package:go_router/go_router.dart'; // 👈 Make sure this is imported
 import 'profile_edit_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -12,10 +10,10 @@ class ProfilePage extends StatefulWidget {
 
   const ProfilePage({
     Key? key,
-    this.name = "Radha",
-    this.username = "Radha_420",
-    this.location = "Location",
-    this.about = "About me",
+    this.name = "Kabir",
+    this.username = "Kabir_G",
+    this.location = "Add Location",
+    this.about = "Add About",
   }) : super(key: key);
 
   @override
@@ -52,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        automaticallyImplyLeading: false, // 🔥 Removes the back arrow
+        automaticallyImplyLeading: false,
         title: const Text(
           "Profile",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
@@ -123,7 +121,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
             SettingsOption(icon: Icons.notifications, text: "Notification preferences"),
             SettingsOption(icon: Icons.help_outline, text: "Help"),
-            SettingsOption(icon: Icons.logout, text: "Logout"),
+            SettingsOption(
+              icon: Icons.logout,
+              text: "Logout",
+              onTap: () {
+                context.go('/'); // 👈 Logout redirects to login page
+              },
+            ),
           ],
         ),
       ),
@@ -160,30 +164,39 @@ class ProfileDetail extends StatelessWidget {
 class SettingsOption extends StatelessWidget {
   final IconData icon;
   final String text;
+  final VoidCallback? onTap;
 
-  const SettingsOption({required this.icon, required this.text, Key? key}) : super(key: key);
+  const SettingsOption({
+    required this.icon,
+    required this.text,
+    this.onTap,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.black12),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, size: 24, color: Colors.black),
-          const SizedBox(width: 10),
-          Text(
-            text,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-          ),
-          const Spacer(),
-          const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.black),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: Colors.black12),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 24, color: Colors.black),
+            const SizedBox(width: 10),
+            Text(
+              text,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            const Spacer(),
+            const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.black),
+          ],
+        ),
       ),
     );
   }

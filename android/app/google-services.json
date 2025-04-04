@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336067590491",
+    "project_id": "mentor-guardian",
+    "storage_bucket": "mentor-guardian.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336067590491:android:3dfa98f574cc4f069e827e",
+        "android_client_info": {
+          "package_name": "com.example.mentor_guardian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf4ursL75EPDyUj5WPw-DAlky2D5zNNuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
