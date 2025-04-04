@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../widgets/notification_icon.dart'; // Import Notification Icon widget
+import '../widgets/notification_icon.dart';
+import '../community/community_home.dart';// Import Notification Icon widget
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -35,16 +36,10 @@ class ExplorePage extends StatelessWidget {
               child: ListView(
                 children: [
                   // 🔹 Fixed Community Navigation using go_router
-                  const ExploreTile(
-                    imagePath: "images/community.png",
-                    title: "Community",
-                    route: "/community", // Route defined in GoRouter
-                  ),
-
-                  // Other tiles
+                  const ExploreTile(imagePath: "images/community.png", title: "Community", route: "/community"), // Route defined in GoRouter),
                   const ExploreTile(imagePath: "images/challenges.png", title: "Challenges", route: "/challenges"),
-                  const ExploreTile(imagePath: "images/telecoaching.png", title: "Telecoaching"),
-                  const ExploreTile(imagePath: "images/live_events.png", title: "Live Events"),
+                  const ExploreTile(imagePath: "images/telecoaching.png", title: "Telecoaching", route: "/telecoaching"),
+                  const ExploreTile(imagePath: "images/live_events.png", title: "Live Events", route: "/live-events"),
                 ],
               ),
             ),
