@@ -13,7 +13,7 @@ class NotificationPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            GoRouter.of(context).go('/'); // Navigate back to the HomePage
+            context.pop(); // Smoothly goes back to previous screen
           },
         ),
         title: const Text(

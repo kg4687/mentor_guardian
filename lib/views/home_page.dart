@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../widgets/notification_icon.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,13 +22,8 @@ class _HomePageState extends State<HomePage> {
           "Good Afternoon, Senthil!",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        actions: [
-          IconButton(
-            icon: Image.asset('images/bell_icon.png', width: 28, height: 28),
-            onPressed: () {
-              GoRouter.of(context).go('/notifications');
-            },
-          ),
+        actions: const [
+          NotificationIcon(),
         ],
       ),
       body: SingleChildScrollView(

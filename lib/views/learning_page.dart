@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/notification_icon.dart';
+
 
 class LearningPage extends StatelessWidget {
   const LearningPage({super.key});
@@ -15,7 +17,11 @@ class LearningPage extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
+        actions: const [
+          NotificationIcon(),
+        ],
       ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
