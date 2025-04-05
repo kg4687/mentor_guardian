@@ -1,0 +1,2 @@
+F:/mentor_guardian/mentor_guardian/android/app/.cxx/Debug/18656b36/armeabi-v7a/CMakeFiles/edit_cache.dir
+F:/mentor_guardian/mentor_guardian/android/app/.cxx/Debug/18656b36/armeabi-v7a/CMakeFiles/rebuild_cache.dir
